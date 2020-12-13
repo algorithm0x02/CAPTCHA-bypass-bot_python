@@ -57,3 +57,28 @@ delay()
 
 # audio challenge 클릭함
 driver.find_element_by_id("recaptcha-audio-button").click()
+
+
+#recaptcha 오디오 챌린지 프레임으로 전환
+driver.switch_to.default_content()
+frames= driver.find_elements_by_tag_name("iframe")
+driver.switch_to.frame(frames[-1])
+delay()
+
+
+# 재생 버튼 클릭
+driver.find_element_by_xpath("/html/body/div/div/div[3]/div/button").click()
+# mp3 오디오 파일 가져 오기
+src = driver.find_element_by_id("audio-source").get_attribute("src")
+print("[INFO] Audio src: %s"%src)
+
+
+# 소스에서 mp3 오디오 파일 다운로드
+urllib.request.urlretrieve(src, os.getcwd()+"\\sample.mp3")
+sound = pydub.AudioSegment.from_mp3(os.getcwd()+"\\sample.mp3")
+sound.export(os.getcwd()+"\\sample.wav", format="wav")
+sample_audio = sr.AudioFile(os.getcwd()+"\\sample.wav")
+r= sr.Recognizer()
+
+with sample_audio as source:
+    audio = r.record(source)
