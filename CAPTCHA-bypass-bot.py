@@ -44,3 +44,16 @@ except:
 frames=driver.find_elements_by_tag_name("iframe")
 driver.switch_to.frame(frames[0]);
 delay()
+
+# 체크 박스를 클릭하여 recaptcha 활성화
+driver.find_element_by_class_name("recaptcha-checkbox-border").click()
+
+
+#recaptcha 오디오 제어 프레임으로 전환
+driver.switch_to.default_content()
+frames=driver.find_element_by_xpath("/html/body/div[2]/div[4]").find_elements_by_tag_name("iframe")
+driver.switch_to.frame(frames[0])
+delay()
+
+# audio challenge 클릭함
+driver.find_element_by_id("recaptcha-audio-button").click()
