@@ -38,3 +38,9 @@ try:
     
 except:
     print("")
+    
+
+#recaptcha 프레임으로 전환
+frames=driver.find_elements_by_tag_name("iframe")
+driver.switch_to.frame(frames[0]);
+delay()
