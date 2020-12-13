@@ -86,3 +86,12 @@ with sample_audio as source:
 #STT ( audio -> text) with google voice recognition 
 key=r.recognize_google(audio)
 print("Recaptcha Passcode: %s"%key)
+
+
+#submit the results key!!!!
+driver.find_element_by_id("audio-response").send_keys(key.lower())
+driver.find_element_by_id("audio-response").send_keys(Keys.ENTER)
+driver.switch_to.default_content()
+delay()
+driver.find_element_by_id("recaptcha-demo-submit").click()
+delay()
