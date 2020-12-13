@@ -82,3 +82,7 @@ r= sr.Recognizer()
 
 with sample_audio as source:
     audio = r.record(source)
+    
+#STT ( audio -> text) with google voice recognition 
+key=r.recognize_google(audio)
+print("Recaptcha Passcode: %s"%key)
