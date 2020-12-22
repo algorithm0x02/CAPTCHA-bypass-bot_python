@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #version 1213
 
 # 시스템 라이브러리 system libraries
