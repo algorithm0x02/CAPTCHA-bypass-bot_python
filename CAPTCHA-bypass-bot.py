@@ -74,6 +74,7 @@ print("[INFO] Audio src: %s"%src)
 
 # 소스에서 mp3 오디오 파일 다운로드
 urllib.request.urlretrieve(src, os.getcwd()+"\\sample.mp3")
+#이부분 파일 못 읽어봄
 sound = pydub.AudioSegment.from_mp3(os.getcwd()+"\\sample.mp3")
 sound.export(os.getcwd()+"\\sample.wav", format="wav")
 sample_audio = sr.AudioFile(os.getcwd()+"\\sample.wav")
@@ -87,7 +88,7 @@ key=r.recognize_google(audio)
 print("Recaptcha Passcode: %s"%key)
 
 
-#submit the results key!!!!
+# 키 입력
 driver.find_element_by_id("audio-response").send_keys(key.lower())
 driver.find_element_by_id("audio-response").send_keys(Keys.ENTER)
 driver.switch_to.default_content()
