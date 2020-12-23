@@ -92,6 +92,9 @@ print("Recaptcha Passcode: %s"%key)
 driver.find_element_by_id("audio-response").send_keys(key.lower())
 driver.find_element_by_id("audio-response").send_keys(Keys.ENTER)
 driver.switch_to.default_content()
+
+#딜레이
 delay()
 driver.find_element_by_id("recaptcha-demo-submit").click()
+
 delay()
